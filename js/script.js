@@ -33,16 +33,16 @@ colorSelection.disabled = true;
 designSelection.addEventListener("click", () => {
     if (designSelection.value != "Select Theme") {
         colorSelection.disabled = false;
-    };
+    }
+
+    else if (designSelection.value = "Theme - JS Puns") {
+        colorSelection.childNodes[9].hidden = true;
+        colorSelection.childNodes[11].hidden = true;
+        colorSelection.childNodes[13].hidden = true;
+    }
 });
 
-colorSelection.addEventListener("click", () => {
-    if (designSelection.value = "Theme - JS Puns") {
 
-    }
-})
 
-console.log(colorSelection.childNodes)
-console.log(colorSelection.childNodes[2].hidden = true)
-
-colorSelection.childNodes[2].hidden = true;
+// console.log(colorSelection.childNodes)
+// console.log(colorSelection.childNodes[5])
