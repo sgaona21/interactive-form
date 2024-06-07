@@ -31,14 +31,8 @@ roleSelect.addEventListener("click", () => {
 colorSelection.disabled = true;
 
 designSelection.addEventListener("change", () => {
-    if (designSelection.value != "Select Theme") {
-        colorSelection.disabled = false;
-    }
-});
-
-
-designSelection.addEventListener("change", () => {
     if (designSelection.value.includes("puns")) {
+        colorSelection.disabled = false;
         colorSelection.childNodes[9].hidden = true;
         colorSelection.childNodes[11].hidden = true;
         colorSelection.childNodes[13].hidden = true;
@@ -47,6 +41,7 @@ designSelection.addEventListener("change", () => {
         colorSelection.childNodes[5].hidden = false;
         colorSelection.childNodes[7].hidden = false;
     } else if (designSelection.value.includes("heart")) {
+        colorSelection.disabled = false;
         colorSelection.childNodes[3].hidden = true;
         colorSelection.childNodes[5].hidden = true;
         colorSelection.childNodes[7].hidden = true;
