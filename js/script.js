@@ -30,19 +30,30 @@ roleSelect.addEventListener("click", () => {
 // ********** T-SHIRT INFO SECTION **********
 colorSelection.disabled = true;
 
-designSelection.addEventListener("click", () => {
+designSelection.addEventListener("change", () => {
     if (designSelection.value != "Select Theme") {
         colorSelection.disabled = false;
-    }
-
-    else if (designSelection.value = "Theme - JS Puns") {
-        colorSelection.childNodes[9].hidden = true;
-        colorSelection.childNodes[11].hidden = true;
-        colorSelection.childNodes[13].hidden = true;
     }
 });
 
 
+designSelection.addEventListener("change", () => {
+    if (designSelection.value.includes("puns")) {
+        colorSelection.childNodes[9].hidden = true;
+        colorSelection.childNodes[11].hidden = true;
+        colorSelection.childNodes[13].hidden = true;
 
-// console.log(colorSelection.childNodes)
-// console.log(colorSelection.childNodes[5])
+        colorSelection.childNodes[3].hidden = false;
+        colorSelection.childNodes[5].hidden = false;
+        colorSelection.childNodes[7].hidden = false;
+    } else if (designSelection.value.includes("heart")) {
+        colorSelection.childNodes[3].hidden = true;
+        colorSelection.childNodes[5].hidden = true;
+        colorSelection.childNodes[7].hidden = true;
+
+        colorSelection.childNodes[9].hidden = false;
+        colorSelection.childNodes[11].hidden = false;
+        colorSelection.childNodes[13].hidden = false;
+    }
+});
+
