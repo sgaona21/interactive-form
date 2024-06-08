@@ -50,5 +50,10 @@ designSelection.addEventListener("change", () => {
         colorSelection.childNodes[11].hidden = false;
         colorSelection.childNodes[13].hidden = false;
     }
+
+    colorSelection.value = "Select a design theme above";
 });
+
+
+
 
