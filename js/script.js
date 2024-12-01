@@ -6,6 +6,7 @@ const jobRole = document.getElementById("other-job-role");
 const roleSelect = document.getElementById("title");
 const colorSelection = document.getElementById("color");
 const designSelection = document.getElementById("design");
+const activitiesSelection = document.getElementById("activities-box");
 
 
 
@@ -54,6 +55,12 @@ designSelection.addEventListener("change", () => {
     colorSelection.value = "Select a design theme above";
 });
 
+
+
+// ********** ACTIVITIES SECTION **********
+activitiesSelection.addEventListener("checked", () => {
+    console.log('hello')
+})
 
 
 
