@@ -9,6 +9,10 @@ const designSelection = document.getElementById("design");
 const activitiesSelection = document.getElementById("activities-box");
 const checkBoxes = document.querySelectorAll('#activities-box input[type="checkbox"]');
 const totalCostElement = document.getElementById('activities-cost');
+const paymentSelection = document.getElementById('payment');
+const paypalBox = document.getElementById("paypal")
+const bitcoinBox = document.getElementById("bitcoin")
+const creditCardBoxes = document.querySelectorAll('.cc');
 
 
 
@@ -78,3 +82,43 @@ checkBoxes.forEach(checkbox => {
 });
 
 
+
+// ********** PAYMENNT SECTION ********** //
+function updatePaymentArea() {
+    const selectedPaymentMethod = paymentSelection.value;
+
+    switch (selectedPaymentMethod) {
+        case 'credit-card':
+            console.log('Credit Card selected');
+            paypalBox.style.display = 'none'
+            bitcoinBox.style.display = 'none'
+            creditCardBoxes.forEach(element => {
+                element.style.display = 'flex';  
+            });
+            break;
+
+        case 'paypal':
+            console.log('PayPal selected');
+            paypalBox.style.display = 'block'
+            bitcoinBox.style.display = 'none'
+            creditCardBoxes.forEach(element => {
+                element.style.display = 'none';  
+            });
+            break;
+
+        case 'bitcoin':
+            console.log('Bitcoin selected');
+            bitcoinBox.style.display = 'block'
+            paypalBox.style.display = 'none'
+            creditCardBoxes.forEach(element => {
+                element.style.display = 'none';  
+            });
+            break;
+    }
+}
+
+updatePaymentArea()
+
+paymentSelection.addEventListener('change', (event) => {
+    updatePaymentArea()
+});

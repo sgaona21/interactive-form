@@ -152,14 +152,14 @@
           <label for="payment">I'm going to pay with:</label>
           <select id="payment" name="user-payment">
             <option value="select method" hidden>Select Payment Method</option>
-            <option value="credit-card">Credit Card</option>
+            <option value="credit-card" selected>Credit Card</option>
             <option value="paypal">PayPal</option>
             <option value="bitcoin">Bitcoin</option>
           </select>
         </div>
 
         <div id="credit-card" class="credit-card">
-          <div class="expiration-box">
+          <div class="expiration-box cc">
             <div class="month-box">
               <label for="exp-month">Expiration Date:</label>
               <select id="exp-month" name="user-exp-month" class="error-border">
@@ -192,7 +192,7 @@
             </div>
           </div> 
 
-          <div class="credit-card-box">
+          <div class="credit-card-box cc">
             <div class="num-box">
               <label for="cc-num">Card Number: <span class="asterisk">*</span>
                 <input id="cc-num" name="user-cc-num" type="text" class="error-border">
