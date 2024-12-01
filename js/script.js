@@ -89,7 +89,6 @@ function updatePaymentArea() {
 
     switch (selectedPaymentMethod) {
         case 'credit-card':
-            console.log('Credit Card selected');
             paypalBox.style.display = 'none'
             bitcoinBox.style.display = 'none'
             creditCardBoxes.forEach(element => {
@@ -98,7 +97,6 @@ function updatePaymentArea() {
             break;
 
         case 'paypal':
-            console.log('PayPal selected');
             paypalBox.style.display = 'block'
             bitcoinBox.style.display = 'none'
             creditCardBoxes.forEach(element => {
@@ -107,7 +105,6 @@ function updatePaymentArea() {
             break;
 
         case 'bitcoin':
-            console.log('Bitcoin selected');
             bitcoinBox.style.display = 'block'
             paypalBox.style.display = 'none'
             creditCardBoxes.forEach(element => {
