@@ -7,6 +7,8 @@ const roleSelect = document.getElementById("title");
 const colorSelection = document.getElementById("color");
 const designSelection = document.getElementById("design");
 const activitiesSelection = document.getElementById("activities-box");
+const checkBoxes = document.querySelectorAll('#activities-box input[type="checkbox"]');
+const totalCostElement = document.getElementById('activities-cost');
 
 
 
@@ -58,9 +60,21 @@ designSelection.addEventListener("change", () => {
 
 
 // ********** ACTIVITIES SECTION **********
-activitiesSelection.addEventListener("checked", () => {
-    console.log('hello')
-})
+let totalCost = null
 
+checkBoxes.forEach(checkbox => {
+    checkbox.addEventListener('change', event => {
+        const isChecked = event.target.checked; 
+        const cost = parseFloat(event.target.dataset.cost); 
+
+        if (isChecked) {
+            totalCost += cost; 
+        } else {
+            totalCost -= cost; 
+        }
+
+        totalCostElement.textContent = `Total: $${totalCost}`
+    });
+});
 
 
