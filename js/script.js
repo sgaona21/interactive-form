@@ -13,6 +13,12 @@ const paymentSelection = document.getElementById('payment');
 const paypalBox = document.getElementById("paypal")
 const bitcoinBox = document.getElementById("bitcoin")
 const creditCardBoxes = document.querySelectorAll('.cc');
+const formSection = document.querySelector('form');
+const emailField = document.getElementById("email");
+const creditCardField = document.getElementById("cc-num");
+const zipCodeField = document.getElementById("zip");
+const cvvField = document.getElementById("cvv");
+
 
 
 
@@ -65,7 +71,7 @@ designSelection.addEventListener("change", () => {
 
 // ********** ACTIVITIES SECTION **********
 let totalCost = null
-
+activityFieldValid = false
 checkBoxes.forEach(checkbox => {
     checkbox.addEventListener('change', event => {
         const isChecked = event.target.checked; 
@@ -78,6 +84,13 @@ checkBoxes.forEach(checkbox => {
         }
 
         totalCostElement.textContent = `Total: $${totalCost}`
+        if (totalCost > 50) {
+            activityFieldValid = true
+            console.log(activityFieldValid)
+        } else if (totalCost < 50) {
+            activityFieldValid = false
+            console.log(activityFieldValid)
+        }
     });
 });
 
@@ -118,4 +131,100 @@ updatePaymentArea()
 
 paymentSelection.addEventListener('change', (event) => {
     updatePaymentArea()
+});
+
+
+
+
+
+// ************ FORM VALIDATION ********** // 
+let userInput = null
+
+nameFieldValid = false
+nameField.addEventListener('blur', (event) => {
+    userInput = nameField.value
+    console.log(userInput)
+    const nameRegex = /^\s*\S+.*$/;
+    if (nameRegex.test(userInput)) {
+        nameField.style.borderColor = 'lightgreen'
+        nameFieldValid = true
+    }   else {
+        nameField.style.borderColor = 'red'
+        nameFieldValid = false
+    }
+});
+
+emailFieldValid = false
+emailField.addEventListener('blur', (event) => {
+    userInput = emailField.value
+    console.log(userInput)
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (emailRegex.test(userInput)) {
+        emailField.style.borderColor = 'lightgreen'
+        emailFieldValid = true
+    }   else {
+        emailField.style.borderColor = 'red'
+        emailFieldValid = false
+    }
+});
+
+ccFieldValid = false
+creditCardField.addEventListener('blur', (event) => {
+    userInput = creditCardField.value
+    console.log(userInput)
+    const ccRegex = /^\d{13,16}$/;
+
+    if (ccRegex.test(userInput)) {
+        creditCardField.style.borderColor = 'lightgreen'
+        ccFieldValid = true
+    }   else {
+        creditCardField.style.borderColor = 'red'
+        ccFieldValid = false
+    }
+});
+
+zipCodeFieldValid = false
+zipCodeField.addEventListener('blur', (event) => {
+    userInput = zipCodeField.value
+    console.log(userInput)
+    const zipRegex = /^\d{5}$/;
+    if (zipRegex.test(userInput)) {
+        zipCodeField.style.borderColor = 'lightgreen'
+        zipCodeFieldValid = true
+    }   else {
+        zipCodeField.style.borderColor = 'red'
+        zipCodeFieldValid = false
+    }
+});
+
+cvvFieldValid = false
+cvvField.addEventListener('blur', (event) => {
+    userInput = cvvField.value
+    console.log(userInput)
+
+    const cvvRegex = /^\d{3}$/;
+
+    if (cvvRegex.test(userInput)) {
+        cvvField.style.borderColor = 'lightgreen'
+        cvvFieldValid = true
+       }   else {
+        cvvField.style.borderColor = 'red'
+        cvvFieldValid = false
+    }
+});
+
+formSection.addEventListener('submit', (event) => {
+    if (paymentSelection.value == 'credit-card') {
+        if (nameFieldValid && emailFieldValid && ccFieldValid && zipCodeFieldValid && cvvFieldValid && activityFieldValid) {
+            alert("FORM SUBMITTED")
+        } else {
+            event.preventDefault()
+            alert("Please complete form before submitting")
+        }
+    } else if (nameFieldValid && emailFieldValid && activityFieldValid) {
+        alert("FORM SUBMITTED")
+    } else {
+        event.preventDefault()
+        alert("Please complete form before submitting")
+    }
 });
