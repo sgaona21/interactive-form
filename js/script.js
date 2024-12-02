@@ -96,6 +96,7 @@ checkBoxes.forEach(checkbox => {
 
 
 
+
 // ********** PAYMENNT SECTION ********** //
 function updatePaymentArea() {
     const selectedPaymentMethod = paymentSelection.value;
@@ -173,7 +174,6 @@ creditCardField.addEventListener('blur', (event) => {
     userInput = creditCardField.value
     console.log(userInput)
     const ccRegex = /^\d{13,16}$/;
-
     if (ccRegex.test(userInput)) {
         creditCardField.style.borderColor = 'lightgreen'
         ccFieldValid = true
@@ -201,9 +201,7 @@ cvvFieldValid = false
 cvvField.addEventListener('blur', (event) => {
     userInput = cvvField.value
     console.log(userInput)
-
     const cvvRegex = /^\d{3}$/;
-
     if (cvvRegex.test(userInput)) {
         cvvField.style.borderColor = 'lightgreen'
         cvvFieldValid = true
