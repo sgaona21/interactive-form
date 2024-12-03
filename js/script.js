@@ -95,6 +95,22 @@ checkBoxes.forEach(checkbox => {
 });
 
 
+checkBoxes.forEach(checkbox => {
+    checkbox.addEventListener('focus', event => {
+        //adds focus class to activity checkboxes
+        event.target.parentElement.classList.add('focus')
+    });
+});
+
+checkBoxes.forEach(checkbox => {
+    checkbox.addEventListener('blur', event => {
+        //removes focus class from activity checkboxes
+        event.target.parentElement.classList.remove('focus')
+    });
+});
+
+
+
 
 
 // ********** PAYMENNT SECTION ********** //
@@ -226,3 +242,5 @@ formSection.addEventListener('submit', (event) => {
         alert("Please complete form before submitting")
     }
 });
+
+
