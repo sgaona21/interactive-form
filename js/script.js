@@ -241,6 +241,19 @@ formSection.addEventListener('submit', (event) => {
         event.preventDefault()
         alert("Please complete form before submitting")
     }
+
+
+    
+        
+    const nameHint = document.getElementById("name-hint")
+    if (nameFieldValid == false) {
+        event.preventDefault()
+        nameField.parentElement.classList.remove('valid')
+        nameField.parentElement.classList.add('not-valid')
+        nameHint.style.display = 'block'
+    }
+
+        
 });
 
 
