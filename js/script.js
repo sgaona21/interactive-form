@@ -18,6 +18,13 @@ const emailField = document.getElementById("email");
 const creditCardField = document.getElementById("cc-num");
 const zipCodeField = document.getElementById("zip");
 const cvvField = document.getElementById("cvv");
+const nameHint = document.getElementById("name-hint")
+const emailHint = document.getElementById("email-hint")
+const activitiesHint = document.getElementById("activities-hint")
+const ccHint = document.getElementById("cc-hint")
+const zipHint = document.getElementById("zip-hint")
+const cvvHint = document.getElementById("cvv-hint")
+
 
 
 
@@ -230,30 +237,85 @@ cvvField.addEventListener('blur', (event) => {
 formSection.addEventListener('submit', (event) => {
     if (paymentSelection.value == 'credit-card') {
         if (nameFieldValid && emailFieldValid && ccFieldValid && zipCodeFieldValid && cvvFieldValid && activityFieldValid) {
-            alert("FORM SUBMITTED")
         } else {
             event.preventDefault()
-            alert("Please complete form before submitting")
         }
     } else if (nameFieldValid && emailFieldValid && activityFieldValid) {
-        alert("FORM SUBMITTED")
     } else {
         event.preventDefault()
-        alert("Please complete form before submitting")
     }
 
 
     
         
-    const nameHint = document.getElementById("name-hint")
+    
     if (nameFieldValid == false) {
         event.preventDefault()
         nameField.parentElement.classList.remove('valid')
         nameField.parentElement.classList.add('not-valid')
         nameHint.style.display = 'block'
+    } else {
+        nameField.parentElement.classList.add('valid')
+        nameField.parentElement.classList.remove('not-valid')
+        nameHint.style.display = 'none'
     }
 
-        
+    if (emailFieldValid == false) {
+        event.preventDefault()
+        emailField.parentElement.classList.remove('valid')
+        emailField.parentElement.classList.add('not-valid')
+        emailHint.style.display = 'block'
+    } else {
+        emailField.parentElement.classList.add('valid')
+        emailField.parentElement.classList.remove('not-valid')
+        emailHint.style.display = 'none'
+    }
+
+    if (activityFieldValid == false) {
+        event.preventDefault()
+        activitiesSelection.parentElement.classList.remove('valid')
+        activitiesSelection.parentElement.classList.add('not-valid')
+        activitiesHint.style.display = 'block'
+    } else {
+        activitiesSelection.parentElement.classList.add('valid')
+        activitiesSelection.parentElement.classList.remove('not-valid')
+        activitiesHint.style.display = 'none'
+    }
+ 
+    if (paymentSelection.value == 'credit-card') {
+        if (ccFieldValid == false) {
+            event.preventDefault()
+            creditCardField.parentElement.classList.remove('valid')
+            creditCardField.parentElement.classList.add('not-valid')
+            ccHint.style.display = 'block'
+        } else {
+            creditCardField.parentElement.classList.add('valid')
+            creditCardField.parentElement.classList.remove('not-valid')
+            ccHint.style.display = 'none'  
+        }    
+
+        if (zipCodeFieldValid == false) {
+            event.preventDefault()
+            zipCodeField.parentElement.classList.remove('valid')
+            zipCodeField.parentElement.classList.add('not-valid')
+            zipHint.style.display = 'block'
+        } else {
+            zipCodeField.parentElement.classList.add('valid')
+            zipCodeField.parentElement.classList.remove('not-valid')
+            zipHint.style.display = 'none'
+        }
+
+        if (cvvFieldValid == false) {
+            event.preventDefault()
+            cvvField.parentElement.classList.remove('valid')
+            cvvField.parentElement.classList.add('not-valid')
+            cvvHint.style.display = 'block'
+        } else {
+            cvvField.parentElement.classList.add('valid')
+            cvvField.parentElement.classList.remove('not-valid')
+            cvvHint.style.display = 'none'  
+        }
+    }
 });
 
 
