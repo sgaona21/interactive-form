@@ -24,6 +24,14 @@ const activitiesHint = document.getElementById("activities-hint")
 const ccHint = document.getElementById("cc-hint")
 const zipHint = document.getElementById("zip-hint")
 const cvvHint = document.getElementById("cvv-hint")
+//checkboxes
+const mainEventCheckbox = document.querySelector('input[name="all"]');
+const jsLibsCheckbox = document.querySelector('input[name="js-libs"]');
+const nodeCheckbox = document.querySelector('input[name="node"]');
+const jsFrameworksCheckbox = document.querySelector('input[name="js-frameworks"]');
+const buildToolsCheckbox = document.querySelector('input[name="build-tools"]');
+const npmCheckbox = document.querySelector('input[name="npm"]');
+const expressCheckbox = document.querySelector('input[name="express"]');
 
 
 
@@ -246,9 +254,6 @@ formSection.addEventListener('submit', (event) => {
     }
 
 
-    
-        
-    
     if (nameFieldValid == false) {
         event.preventDefault()
         nameField.parentElement.classList.remove('valid')
@@ -316,6 +321,28 @@ formSection.addEventListener('submit', (event) => {
             cvvHint.style.display = 'none'  
         }
     }
+});
+
+
+
+// ************ CONFLICTING ACTIVITY TIMES ********** // 
+checkBoxes.forEach(checkbox => {
+    checkbox.addEventListener('change', event => {
+        currentSelectionTimeDate = event.target.getAttribute('data-day-and-time')
+        currentSelectionNameAttribute = event.target.getAttribute('name')
+        console.log(currentSelectionTimeDate)
+        console.log(currentSelectionNameAttribute)
+
+        checkBoxes.forEach(element => {
+            if (element.getAttribute('name') != currentSelectionNameAttribute) {
+                if (element.getAttribute('data-day-and-time') == currentSelectionTimeDate) {
+                    element.parentElement.classList.add('disabled')
+                    element.parentElement.firstElementChild.disabled = true
+                }
+            } 
+        });
+
+    });
 });
 
 
