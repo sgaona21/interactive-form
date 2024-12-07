@@ -191,18 +191,41 @@ nameField.addEventListener('blur', (event) => {
     }
 });
 
+const customEmailErrorMessage = document.createElement("span");
+customEmailErrorMessage.textContent = "lol, you need an @ symbol"
+emailField.parentElement.append(customEmailErrorMessage)
+customEmailErrorMessage.classList.add('email-hint')
+customEmailErrorMessage.classList.add('hint')
+customEmailErrorMessage.style.display = 'none'
+
 emailFieldValid = false
 emailField.addEventListener('blur', (event) => {
     userInput = emailField.value
-    console.log(userInput)
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    
+
     if (emailRegex.test(userInput)) {
         emailField.style.borderColor = 'lightgreen'
         emailFieldValid = true
 
+        if (userInput.includes('@')) {
+            emailField.parentElement.classList.add('valid')
+            emailField.parentElement.classList.remove('not-valid')
+            customEmailErrorMessage.style.display = 'none'
+        }
+        emailField.parentElement.classList.add('valid')
+        emailField.parentElement.classList.remove('not-valid')
+        emailHint.style.display = 'none'
+
     }   else {
         emailField.style.borderColor = 'red'
         emailFieldValid = false
+        if (!userInput.includes('@')) {
+            emailField.parentElement.classList.remove('valid')
+            emailField.parentElement.classList.add('not-valid')
+            customEmailErrorMessage.style.display = 'block'
+        } 
     }
 });
 
