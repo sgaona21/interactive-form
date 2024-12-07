@@ -338,10 +338,27 @@ checkBoxes.forEach(checkbox => {
                 if (element.getAttribute('data-day-and-time') == currentSelectionTimeDate) {
                     element.parentElement.classList.add('disabled')
                     element.parentElement.firstElementChild.disabled = true
-                }
+                } 
             } 
         });
 
+        if (!jsLibsCheckbox.checked) {
+            jsFrameworksCheckbox.parentElement.classList.remove('disabled')
+            jsFrameworksCheckbox.disabled = false;
+        }
+        if (!jsFrameworksCheckbox.checked) {
+            jsLibsCheckbox.parentElement.classList.remove('disabled')
+            jsLibsCheckbox.disabled = false;
+        }
+
+        if (!buildToolsCheckbox.checked) {
+            nodeCheckbox.parentElement.classList.remove('disabled')
+            nodeCheckbox.disabled = false;
+        }
+        if (!nodeCheckbox.checked) {
+            buildToolsCheckbox.parentElement.classList.remove('disabled')
+            buildToolsCheckbox.disabled = false;
+        }
     });
 });
 
