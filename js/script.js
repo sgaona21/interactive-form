@@ -101,10 +101,8 @@ checkBoxes.forEach(checkbox => {
         totalCostElement.textContent = `Total: $${totalCost}`
         if (totalCost > 50) {
             activityFieldValid = true
-            console.log(activityFieldValid)
         } else if (totalCost < 50) {
             activityFieldValid = false
-            console.log(activityFieldValid)
         }
     });
 });
@@ -180,9 +178,16 @@ nameField.addEventListener('blur', (event) => {
     if (nameRegex.test(userInput)) {
         nameField.style.borderColor = 'lightgreen'
         nameFieldValid = true
+        nameField.parentElement.classList.add('valid')
+        nameField.parentElement.classList.remove('not-valid')
+        nameHint.style.display = 'none'
     }   else {
         nameField.style.borderColor = 'red'
         nameFieldValid = false
+        nameField.parentElement.classList.remove('valid')
+        nameField.parentElement.classList.add('not-valid')
+        nameHint.style.display = 'block'
+
     }
 });
 
@@ -194,6 +199,7 @@ emailField.addEventListener('blur', (event) => {
     if (emailRegex.test(userInput)) {
         emailField.style.borderColor = 'lightgreen'
         emailFieldValid = true
+
     }   else {
         emailField.style.borderColor = 'red'
         emailFieldValid = false
@@ -330,8 +336,6 @@ checkBoxes.forEach(checkbox => {
     checkbox.addEventListener('change', event => {
         currentSelectionTimeDate = event.target.getAttribute('data-day-and-time')
         currentSelectionNameAttribute = event.target.getAttribute('name')
-        console.log(currentSelectionTimeDate)
-        console.log(currentSelectionNameAttribute)
 
         checkBoxes.forEach(element => {
             if (element.getAttribute('name') != currentSelectionNameAttribute) {
