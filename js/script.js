@@ -1,4 +1,3 @@
-console.log("linked")
 
 // ********** VARIABLES **********
 const nameField = document.getElementById("name");
@@ -59,6 +58,7 @@ roleSelect.addEventListener("click", () => {
 colorSelection.disabled = true;
 
 designSelection.addEventListener("change", () => {
+    //assigns specific colors according to design selection
     if (designSelection.value.includes("puns")) {
         colorSelection.disabled = false;
         colorSelection.childNodes[9].hidden = true;
@@ -88,6 +88,7 @@ designSelection.addEventListener("change", () => {
 let totalCost = null
 activityFieldValid = false
 checkBoxes.forEach(checkbox => {
+    //loops through all activity boxes and adds keeps track of total cost
     checkbox.addEventListener('change', event => {
         const isChecked = event.target.checked; 
         const cost = parseFloat(event.target.dataset.cost); 
