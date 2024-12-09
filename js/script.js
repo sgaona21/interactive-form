@@ -44,7 +44,7 @@ nameField.focus();
 // ********** JOB ROLE SECTION **********
 jobRole.style.display = "none";
 
-roleSelect.addEventListener("click", () => {
+roleSelect.addEventListener("change", () => {
     if (roleSelect.value == "other") {
         jobRole.style.display = "block";
     } else if (roleSelect.value !== "other") {
@@ -222,10 +222,10 @@ emailField.addEventListener('blur', (event) => {
     }   else {
         emailField.style.borderColor = 'red'
         emailFieldValid = false
-        if (!userInput.includes('@')) {
+        if (!userInput.includes('@') ) {
             emailField.parentElement.classList.remove('valid')
             emailField.parentElement.classList.add('not-valid')
-            customEmailErrorMessage.style.display = 'block'
+            // customEmailErrorMessage.style.display = 'block'
         } 
     }
 });
